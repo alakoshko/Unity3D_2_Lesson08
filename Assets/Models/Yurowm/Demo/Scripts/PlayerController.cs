@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float m_MovingTurnSpeed = 360;
     [Range(1f, 4f)] [SerializeField] float m_GravityMultiplier = 2f;
     [SerializeField] float m_JumpPower = 12f;
-    [SerializeField] float m_MoveSpeedMultiplier = 1f;
-    [SerializeField] float m_AnimSpeedMultiplier = 1f;
+    [SerializeField] float m_MoveSpeedMultiplier = 0.1f;
+    //[SerializeField] float m_AnimSpeedMultiplier = 1f;
 
     Rigidbody m_Rigidbody;
     float m_OrigGroundCheckDistance;
@@ -123,8 +123,15 @@ public class PlayerController : MonoBehaviour {
     
     private void FixedUpdate()
     {
-        animator.SetFloat("Speed", z, 0.1f,Time.deltaTime);
-        animator.SetFloat("Direction", y, 0.1f, Time.deltaTime);
+        if (Mathf.Abs(Input.GetAxis("Vertical")) > 0 || Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+                actions.SendMessage("Run", SendMessageOptions.DontRequireReceiver);
+            else
+                actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
+        }
+        else if(animator.GetFloat("Speed") > 0)
+            actions.SendMessage("Stay", SendMessageOptions.DontRequireReceiver);
     }
     #region NavMeshTDA
     public void Move(Vector3 move, bool crouch, bool jump)
