@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.Networking;
 
 [RequireComponent (typeof (Animator))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : NetworkBehaviour {
 
 	public Transform rightGunBone;
 	public Transform leftGunBone;
@@ -42,6 +43,9 @@ public class PlayerController : MonoBehaviour {
 
     
     void Start() {
+        //Д.б. только локальный игрок
+        if (!isLocalPlayer) return;
+
 		animator = GetComponent<Animator> ();
 		if (arsenal.Length > 0)
 			SetArsenal (arsenal[0].name);
@@ -81,6 +85,12 @@ public class PlayerController : MonoBehaviour {
                     newRightGun.transform.parent = rightGunBone;
                     newRightGun.transform.localPosition = Vector3.zero;
                     newRightGun.transform.localRotation = Quaternion.Euler(90, 0, 0);
+
+                    //var newRightGun = (Transform)Instantiate(hand.rightGun, Vector3.zero, Quaternion.Euler(90, 0, 0)).transform;
+                    //newRightGun.parent = rightGunBone;
+                    //newRightGun.localPosition = Vector3.zero;
+                    //newRightGun.localRotation = Quaternion.Euler(90, 0, 0);
+
                 }
                 if (hand.leftGun != null)
                 {

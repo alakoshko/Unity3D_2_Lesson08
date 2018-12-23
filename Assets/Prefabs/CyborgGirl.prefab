@@ -1677,6 +1677,7 @@ GameObject:
   - component: {fileID: 11400002}
   - component: {fileID: 260796575}
   - component: {fileID: 260796574}
+  - component: {fileID: 4759407168819150383}
   m_Layer: 0
   m_Name: CyborgGirl
   m_TagString: Untagged
@@ -1769,7 +1770,6 @@ MonoBehaviour:
   m_GravityMultiplier: 2
   m_JumpPower: 12
   m_MoveSpeedMultiplier: 1
-  m_AnimSpeedMultiplier: 1
 --- !u!136 &260796575
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1800,3 +1800,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4759407168819150383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
